@@ -23,11 +23,11 @@ export const STATUS_CONFIG: Record<
     color: '#9B1C1C',
     bg: '#FBE3E3',
   },
-  FAILED: {
-    label: 'Falha',
-    color: '#9B1C1C',
-    bg: '#FBE3E3',
-  },
+  // FAILED: {
+  //   label: 'Falha',
+  //   color: '#9B1C1C',
+  //   bg: '#FBE3E3',
+  // },
   PLANNED: {
     label: 'Planejada',
     color: '#37474F',
