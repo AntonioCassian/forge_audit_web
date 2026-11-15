@@ -13,7 +13,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+
     {/* injectFirst: os estilos do MUI entram antes no <head>, então as classes do Tailwind vencem. */}
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
@@ -25,5 +25,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </BrowserRouter>
       </ThemeProvider>
     </StyledEngineProvider>
-  </React.StrictMode>,
 );
