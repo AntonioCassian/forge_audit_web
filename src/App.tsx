@@ -1,6 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+
 import ProtectedRoute from './components/ProtectedRoute';
 import SidebarLayout from './components/SidebarLayout';
+
 import AuditLogsPage from './pages/AuditLogsPage';
 import LoginPage from './pages/LoginPage';
 import MachinesPage from './pages/MachinesPage';
@@ -10,26 +12,59 @@ import UsersPage from './pages/UsersPage';
 export default function App() {
   return (
     <Routes>
+      {/* Rota de login */}
       <Route path="/login" element={<LoginPage />} />
 
-      {/* 1º nível: exige sessão. 2º nível: exige a permissão da rota (matriz em auth/permissions.ts). */}
+      {/* Rota inicial */}
+      <Route path="/" element={<Navigate to="/machines" replace />} />
+
+      {/* Exige autenticação */}
       <Route element={<ProtectedRoute />}>
         <Route element={<SidebarLayout />}>
-          <Route element={<ProtectedRoute permission="machines:view" />}>
-            <Route path="/machines" element={<MachinesPage />} />
+          
+          {/* Máquinas */}
+          <Route
+            path="/machines"
+            element={
+              <ProtectedRoute permission="machines:view" />
+            }
+          >
+            <Route index element={<MachinesPage />} />
           </Route>
-          <Route element={<ProtectedRoute permission="orders:view" />}>
-            <Route path="/orders" element={<ProductionOrdersPage />} />
+
+          {/* Ordens de produção */}
+          <Route
+            path="/orders"
+            element={
+              <ProtectedRoute permission="orders:view" />
+            }
+          >
+            <Route index element={<ProductionOrdersPage />} />
           </Route>
-          <Route element={<ProtectedRoute permission="audit:view" />}>
-            <Route path="/audit" element={<AuditLogsPage />} />
+
+          {/* Auditoria */}
+          <Route
+            path="/audit"
+            element={
+              <ProtectedRoute permission="audit:view" />
+            }
+          >
+            <Route index element={<AuditLogsPage />} />
           </Route>
-          <Route element={<ProtectedRoute permission="users:manage" />}>
-            <Route path="/users" element={<UsersPage />} />
+
+          {/* Usuários */}
+          <Route
+            path="/users"
+            element={
+              <ProtectedRoute permission="users:manage" />
+            }
+          >
+            <Route index element={<UsersPage />} />
           </Route>
         </Route>
       </Route>
 
+      {/* Qualquer rota inexistente */}
       <Route path="*" element={<Navigate to="/machines" replace />} />
     </Routes>
   );
