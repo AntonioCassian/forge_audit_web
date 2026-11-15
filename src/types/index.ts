@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type Role = 'OPERATOR' | 'SUPERVISOR' | 'AUDITOR';
 export type MachineStatus = 'OPERATIONAL' | 'MAINTENANCE' | 'STOPPED_DUE_TO_FAILURE';
 export type OrderStatus = 'PLANNED' | 'IN_PROGRESS' | 'SUSPENDED' | 'COMPLETED';
