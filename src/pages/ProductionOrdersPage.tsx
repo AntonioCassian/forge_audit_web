@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography';
 
 import AddIcon from '@mui/icons-material/Add';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import EditNoteIcon from '@mui/icons-material/EditNote';
+// import EditNoteIcon from '@mui/icons-material/EditNote';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
@@ -98,8 +98,8 @@ function RowActions({
 
   const canComplete = status === 'IN_PROGRESS';
 
-  const canUpdateQty =
-    status === 'IN_PROGRESS' || status === 'SUSPENDED';
+  // const canUpdateQty =
+  //   status === 'IN_PROGRESS' || status === 'SUSPENDED';
 
   if (status === 'COMPLETED') {
     return (
@@ -124,17 +124,17 @@ function RowActions({
     onStatus(order, newStatus, message);
   };
 
-  const handleQuantity = () => {
-    if (!machineId) {
-      console.error(
-        'Máquina não vinculada à ordem:',
-        order
-      );
-      return;
-    }
+  // const handleQuantity = () => {
+  //   if (!machineId) {
+  //     console.error(
+  //       'Máquina não vinculada à ordem:',
+  //       order
+  //     );
+  //     return;
+  //   }
 
-    onQuantity(order);
-  };
+  //   onQuantity(order);
+  // };
 
   return (
     <div className="flex flex-wrap gap-2">
@@ -299,17 +299,17 @@ export default function ProductionOrdersPage() {
   // REPLACE ORDER
   // ========================================
 
-  const replaceOrder = (updated: ProductionOrder) => {
+  // const replaceOrder = (updated: ProductionOrder) => {
 
-    setOrders((prev) =>
-      prev.map((order) =>
-        order.id === updated.id
-          ? { ...order, ...updated }
-          : order
-      )
-    );
+  //   setOrders((prev) =>
+  //     prev.map((order) =>
+  //       order.id === updated.id
+  //         ? { ...order, ...updated }
+  //         : order
+  //     )
+  //   );
 
-  };
+  // };
 
   // ========================================
   // CREATE ORDER
@@ -392,40 +392,40 @@ export default function ProductionOrdersPage() {
   // UPDATE PRODUCED QUANTITY
   // ========================================
 
-  const handleQuantity = async (
-    order: ProductionOrder,
-    producedQuantity: number
-  ) => {
+  // const handleQuantity = async (
+  //   order: ProductionOrder,
+  //   producedQuantity: number
+  // ) => {
 
-    try {
+  //   try {
 
-      await productionOrderService.updateProducedQuantity(
-        order.id,
-        producedQuantity
-      );
+  //     await productionOrderService.updateProducedQuantity(
+  //       order.id,
+  //       producedQuantity
+  //     );
 
-      setQuantityOrder(null);
+  //     setQuantityOrder(null);
 
-      // Atualiza a tabela automaticamente.
-      await load();
+  //     // Atualiza a tabela automaticamente.
+  //     await load();
 
-      notify(
-        `Quantidade do lote ${order.productionCode} atualizada.`
-      );
+  //     notify(
+  //       `Quantidade do lote ${order.productionCode} atualizada.`
+  //     );
 
-    } catch (err) {
+  //   } catch (err) {
 
-      notify(
-        getErrorMessage(
-          err,
-          'Não foi possível atualizar a quantidade produzida.'
-        ),
-        'error'
-      );
+  //     notify(
+  //       getErrorMessage(
+  //         err,
+  //         'Não foi possível atualizar a quantidade produzida.'
+  //       ),
+  //       'error'
+  //     );
 
-    }
+  //   }
 
-  };
+  // };
 
   // ========================================
   // RENDER
@@ -648,7 +648,7 @@ export default function ProductionOrdersPage() {
 
       {/* UPDATE QUANTITY MODAL */}
 
-      <Can permission="orders:operate">
+      {/* <Can permission="orders:operate">
 
         <OrderQuantityDialog
           order={quantityOrder}
@@ -656,7 +656,7 @@ export default function ProductionOrdersPage() {
           onSubmit={handleQuantity}
         />
 
-      </Can>
+      </Can> */}
 
       {/* TOAST */}
 
