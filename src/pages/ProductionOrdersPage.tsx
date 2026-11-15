@@ -21,7 +21,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 import Can from '../components/Can';
 import OrderFormModal from '../components/OrderFormModal';
-import OrderQuantityDialog from '../components/OrderQuantityDialog';
+// import OrderQuantityDialog from '../components/OrderQuantityDialog';
 import PageHeader from '../components/PageHeader';
 import StatusBadge from '../components/StatusBadge';
 
@@ -79,14 +79,14 @@ interface RowActionsProps {
     message: string
   ) => void;
 
-  onQuantity: (order: ProductionOrder) => void;
+  // onQuantity: (order: ProductionOrder) => void;
 }
 
 function RowActions({
   order,
   busy,
   onStatus,
-  onQuantity,
+  // onQuantity,
 }: RowActionsProps) {
 
   const { status, machineId } = order;
@@ -241,8 +241,8 @@ export default function ProductionOrdersPage() {
 
   const [createOpen, setCreateOpen] = useState(false);
 
-  const [quantityOrder, setQuantityOrder] =
-    useState<ProductionOrder | null>(null);
+  // const [quantityOrder, setQuantityOrder] =
+  //   useState<ProductionOrder | null>(null);
 
   const [busyId, setBusyId] = useState<string | null>(null);
 
@@ -586,7 +586,7 @@ export default function ProductionOrdersPage() {
                         order={o}
                         busy={busyId === o.id}
                         onStatus={handleStatus}
-                        onQuantity={setQuantityOrder}
+                        // onQuantity={setQuantityOrder}
                       />
 
                     </TableCell>
